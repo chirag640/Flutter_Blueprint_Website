@@ -136,7 +136,7 @@ export default function Hero() {
                 fontSize: "1rem",
               }}
             >
-              {`flutter_blueprint init my_app`}
+              {`flutter_blueprint init`}
             </SyntaxHighlighter>
           </Box>
         </Box>

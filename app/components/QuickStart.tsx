@@ -107,7 +107,7 @@ export default function QuickStart() {
                 marginTop: "16px",
               }}
             >
-              {`flutter_blueprint init my_app`}
+              {`flutter_blueprint init`}
             </SyntaxHighlighter>
           </Box>
         </TabPanel>

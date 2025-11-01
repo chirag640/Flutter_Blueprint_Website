@@ -42,6 +42,11 @@ export default function RootLayout({
           href="https://fonts.gstatic.com"
           crossOrigin="anonymous"
         />
+        {/* Favicon: prefer the provided PNG placed at /public/favicon.png (use icon.png as fallback) */}
+        <link rel="icon" href="/favicon.png" type="image/png" />
+        <link rel="icon" href="/icon.png" type="image/png" />
+        <link rel="apple-touch-icon" href="/logo-full.png" />
+        <link rel="apple-touch-icon" href="/icon.png" />
       </head>
       <body className={inter.className}>
         <AppRouterCacheProvider>

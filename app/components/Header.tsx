@@ -45,19 +45,37 @@ export default function Header(props: HeaderProps) {
       <AppBar position="fixed">
         <Container maxWidth="xl">
           <Toolbar disableGutters sx={{ py: 1 }}>
-            <Typography
-              variant="h6"
-              component="div"
-              sx={{
-                flexGrow: 0,
-                fontWeight: "bold",
-                display: "flex",
-                alignItems: "center",
-                mr: 4,
-              }}
+            <Box
+              sx={{ display: "flex", alignItems: "center", flexGrow: 0, mr: 4 }}
             >
-              🎯 flutter_blueprint
-            </Typography>
+              {/* Logo image - prefer wide logo at /public/logo-full.png; fall back to /icon.png if missing */}
+              <Box
+                component="img"
+                src="/logo-full.png"
+                onError={(e: any) => (e.currentTarget.src = "/icon.png")}
+                alt="flutter_blueprint logo"
+                sx={{ height: 30, width: 30, mr: 1 }}
+              />
+              <Typography
+                variant="h6"
+                component="div"
+                sx={{
+                  fontWeight: "bold",
+                  display: { xs: "none", sm: "block" },
+                  lineHeight: 1,
+                }}
+              >
+                <Box component="span" sx={{ color: "text.primary" }}> 
+                  flutter
+                </Box>
+                <Box
+                  component="span"
+                  sx={{ color: "#00b1f1", fontWeight: 600 }}
+                >
+                  _blueprint
+                </Box>
+              </Typography>
+            </Box>
 
             <Box
               sx={{ flexGrow: 1, display: { xs: "none", md: "flex" }, gap: 1 }}
