@@ -119,7 +119,7 @@ export default function QuickStart() {
             </Typography>
             <Typography variant="body1" color="text.secondary" sx={{ mb: 3 }}>
               Just run without arguments for an interactive wizard with arrow
-              key navigation, multi-select checkboxes, and smart validation:
+              key navigation, multi-select checkboxes, smart validation, and all the latest features including Hive and Pagination:
             </Typography>
             <SyntaxHighlighter
               language="bash"
@@ -150,10 +150,10 @@ export default function QuickStart() {
 
 ✔ 📱 App name · my_awesome_app
 
-✔ 🎯 Choose state management · provider
+✔ 🎯 Choose state management · bloc
    • Provider (ChangeNotifier, easy to learn)
    • Riverpod (Compile-time safe, better testability)
-   • Bloc (Event-driven, coming soon)
+   • Bloc (Event-driven, powerful patterns)
    [Use ↑↓ arrow keys, Enter to select]
 
 ✔ ✨ Select features to include (use space to select, enter to confirm)
@@ -161,19 +161,29 @@ export default function QuickStart() {
    ✓ Localization (i18n support)
    ✓ Environment config (.env)
    ✓ API client (Dio + interceptors)
+   ✓ Hive database (NoSQL offline caching)
+   ✓ Pagination (Infinite scroll + pull-to-refresh)
    ✓ Test scaffolding
+
+✔ 🚀 Select target platforms (use space to select)
+   ✓ Mobile (iOS + Android)
+   ✓ Web
+   ✓ Desktop (Windows, macOS, Linux)
 
 📋 Configuration Summary:
    App name: my_awesome_app
-   State management: provider
+   State management: bloc
+   Platforms: Mobile, Web, Desktop
    Theme: ✅
    Localization: ✅
    Environment: ✅
    API client: ✅
+   Hive database: ✅
+   Pagination: ✅
    Tests: ✅
 
 🚀 Generating project structure...
-✅ Generated 43 files successfully!`}
+✅ Generated 65 files successfully!`}
               </SyntaxHighlighter>
             </Box>
           </Box>
@@ -212,6 +222,26 @@ flutter_blueprint init my_app \\
   --api \\
   --tests \\
   --no-localization
+
+# With Hive database and Pagination
+flutter_blueprint init my_app \\
+  --state bloc \\
+  --hive \\
+  --pagination \\
+  --api
+
+# Full-featured app with everything
+flutter_blueprint init my_app \\
+  --state bloc \\
+  --api \\
+  --hive \\
+  --pagination \\
+  --theme \\
+  --localization \\
+  --env \\
+  --tests \\
+  --ci github \\
+  --platforms all
 
 # With CI/CD configuration
 flutter_blueprint init my_app --ci github

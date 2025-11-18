@@ -17,6 +17,8 @@ import IntegrationInstructionsIcon from "@mui/icons-material/IntegrationInstruct
 import DevicesIcon from "@mui/icons-material/Devices";
 import SecurityIcon from "@mui/icons-material/Security";
 import GroupsIcon from "@mui/icons-material/Groups";
+import DataObjectIcon from "@mui/icons-material/DataObject";
+import ViewStreamIcon from "@mui/icons-material/ViewStream";
 
 const features = [
   {
@@ -62,6 +64,18 @@ const features = [
       "LocalStorage (SharedPreferences) + SecureStorage for sensitive data like tokens.",
   },
   {
+    icon: <DataObjectIcon sx={{ fontSize: 48 }} />,
+    title: "Hive Database",
+    description:
+      "Lightning-fast NoSQL database with cache manager, sync manager, and TTL support built-in.",
+  },
+  {
+    icon: <ViewStreamIcon sx={{ fontSize: 48 }} />,
+    title: "Smart Pagination",
+    description:
+      "Production-ready pagination with infinite scroll, pull-to-refresh, and skeleton loaders.",
+  },
+  {
     icon: <GroupsIcon sx={{ fontSize: 48 }} />,
     title: "Team Collaboration",
     description:
@@ -98,7 +112,7 @@ export default function FeatureGrid() {
 
         <Grid container spacing={3}>
           {features.map((feature, index) => (
-            <Grid item xs={12} sm={6} md={4} key={index}>
+            <Grid item xs={12} sm={6} md={6} lg={4} key={index}>
               <Box
                 sx={{
                   height: "100%",

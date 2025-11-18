@@ -18,7 +18,7 @@ export default function ProjectStructure() {
               fontSize: { xs: "2rem", md: "2.5rem" },
             }}
           >
-            What You Get (43+ Files!)
+            What You Get (65+ Files!)
           </Typography>
           <Typography
             variant="h6"
@@ -216,6 +216,56 @@ export default function ProjectStructure() {
                 sx={{ fontSize: 16, verticalAlign: "middle", mr: 0.5 }}
               />
               <span className="file">secure_storage.dart</span>
+            </div>
+            <div style={{ paddingLeft: "48px" }}>
+              <FolderIcon
+                sx={{ fontSize: 16, verticalAlign: "middle", mr: 0.5 }}
+              />
+              <span className="folder highlight">database/</span>{" "}
+              <span className="comment"># 🗄️ Hive NoSQL database</span>
+            </div>
+            <div style={{ paddingLeft: "64px" }}>
+              <InsertDriveFileIcon
+                sx={{ fontSize: 16, verticalAlign: "middle", mr: 0.5 }}
+              />
+              <span className="file">hive_database.dart</span>
+            </div>
+            <div style={{ paddingLeft: "64px" }}>
+              <InsertDriveFileIcon
+                sx={{ fontSize: 16, verticalAlign: "middle", mr: 0.5 }}
+              />
+              <span className="file">cache_manager.dart</span>
+            </div>
+            <div style={{ paddingLeft: "64px" }}>
+              <InsertDriveFileIcon
+                sx={{ fontSize: 16, verticalAlign: "middle", mr: 0.5 }}
+              />
+              <span className="file">sync_manager.dart</span>
+            </div>
+            <div style={{ paddingLeft: "48px" }}>
+              <FolderIcon
+                sx={{ fontSize: 16, verticalAlign: "middle", mr: 0.5 }}
+              />
+              <span className="folder highlight">pagination/</span>{" "}
+              <span className="comment"># 📜 Smart pagination</span>
+            </div>
+            <div style={{ paddingLeft: "64px" }}>
+              <InsertDriveFileIcon
+                sx={{ fontSize: 16, verticalAlign: "middle", mr: 0.5 }}
+              />
+              <span className="file">pagination_controller.dart</span>
+            </div>
+            <div style={{ paddingLeft: "64px" }}>
+              <InsertDriveFileIcon
+                sx={{ fontSize: 16, verticalAlign: "middle", mr: 0.5 }}
+              />
+              <span className="file">pagination_state.dart</span>
+            </div>
+            <div style={{ paddingLeft: "64px" }}>
+              <InsertDriveFileIcon
+                sx={{ fontSize: 16, verticalAlign: "middle", mr: 0.5 }}
+              />
+              <span className="file">paginated_list_view.dart</span>
             </div>
             <div style={{ paddingLeft: "48px" }}>
               <FolderIcon

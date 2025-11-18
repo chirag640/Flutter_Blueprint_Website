@@ -75,11 +75,13 @@ Flutter_Blueprint_Website/
 All content is sourced directly from the flutter_blueprint README.md, including:
 
 - Feature descriptions
-- Code examples
-- CLI commands
-- Project structure
-- State management templates
+- Code examples (with Hive and Pagination support)
+- CLI commands (updated with --hive and --pagination flags)
+- Project structure (65+ files)
+- State management templates (Provider, Riverpod, Bloc)
 - CI/CD configurations
+- Hive database integration
+- Smart pagination system
 
 ## 🛠️ Technologies Used
 

@@ -76,9 +76,9 @@ export default function Hero() {
               component="span"
               sx={{ color: "primary.main", fontWeight: 600 }}
             >
-              43+ professional files
+              65+ professional files
             </Box>
-            , complete architecture, and error handling—in seconds.
+            , complete architecture, offline caching, and pagination—in seconds.
           </Typography>
 
           <Stack
