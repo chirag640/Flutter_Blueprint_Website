@@ -119,7 +119,8 @@ export default function QuickStart() {
             </Typography>
             <Typography variant="body1" color="text.secondary" sx={{ mb: 3 }}>
               Just run without arguments for an interactive wizard with arrow
-              key navigation, multi-select checkboxes, smart validation, and all the latest features including Hive and Pagination:
+              key navigation, multi-select checkboxes, smart validation, and all
+              the latest features including Hive and Pagination:
             </Typography>
             <SyntaxHighlighter
               language="bash"
