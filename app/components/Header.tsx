@@ -8,13 +8,18 @@ import {
   Button,
   Box,
   Container,
-  IconButton,
   useScrollTrigger,
+  IconButton,
 } from "@mui/material";
 import GitHubIcon from "@mui/icons-material/GitHub";
+import MenuBookIcon from "@mui/icons-material/MenuBook";
+import MenuIcon from "@mui/icons-material/Menu";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 interface HeaderProps {
   window?: () => Window;
+  onMobileMenuToggle?: () => void;
 }
 
 function ElevationScroll(
@@ -33,97 +38,124 @@ function ElevationScroll(
 }
 
 export default function Header(props: HeaderProps) {
-  const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth", block: "start" });
-    }
-  };
+  const pathname = usePathname();
+  const isDocsPage = pathname === "/docs";
 
   return (
     <ElevationScroll {...props}>
-      <AppBar position="fixed">
+      <AppBar
+        position="fixed"
+        sx={{
+          bgcolor: "rgba(18, 18, 18, 0.7)",
+          backdropFilter: "blur(20px) saturate(180%)",
+          WebkitBackdropFilter: "blur(20px) saturate(180%)",
+          borderBottom: "1px solid rgba(255, 255, 255, 0.08)",
+          boxShadow: "0 4px 30px rgba(0, 0, 0, 0.1)",
+        }}
+      >
         <Container maxWidth="xl">
-          <Toolbar disableGutters sx={{ py: 1 }}>
+          <Toolbar
+            disableGutters
+            sx={{ py: 0.5, minHeight: { xs: 56, sm: 64 } }}
+          >
+            {/* Mobile Menu Button - Only on docs page */}
+            {isDocsPage && (
+              <IconButton
+                color="inherit"
+                aria-label="open drawer"
+                edge="start"
+                onClick={props.onMobileMenuToggle}
+                sx={{ mr: 2, display: { md: "none" } }}
+              >
+                <MenuIcon />
+              </IconButton>
+            )}
+
+            {/* Logo - Clickable to Home */}
             <Box
-              sx={{ display: "flex", alignItems: "center", flexGrow: 0, mr: 4 }}
+              component={Link}
+              href="/"
+              sx={{
+                display: "flex",
+                alignItems: "center",
+                flexGrow: 0,
+                mr: 4,
+                textDecoration: "none",
+                cursor: "pointer",
+                transition: "opacity 0.2s",
+                "&:hover": { opacity: 0.8 },
+              }}
             >
-              {/* Logo image - prefer wide logo at /public/logo-full.png; fall back to /icon.png if missing */}
               <Box
                 component="img"
                 src="/logo-full.png"
                 onError={(e: any) => (e.currentTarget.src = "/icon.png")}
                 alt="flutter_blueprint logo"
-                sx={{ height: 30, width: 30, mr: 1 }}
+                sx={{ height: 24, width: 24, mr: 1 }}
               />
               <Typography
                 variant="h6"
                 component="div"
                 sx={{
-                  fontWeight: "bold",
+                  fontWeight: 700,
                   display: { xs: "none", sm: "block" },
                   lineHeight: 1,
+                  fontSize: "1rem",
                 }}
               >
-                <Box component="span" sx={{ color: "text.primary" }}> 
+                <Box component="span" sx={{ color: "text.primary" }}>
                   flutter
                 </Box>
                 <Box
                   component="span"
-                  sx={{ color: "#00b1f1", fontWeight: 600 }}
+                  sx={{ color: "#00b1f1", fontWeight: 700 }}
                 >
                   _blueprint
                 </Box>
               </Typography>
             </Box>
 
-            <Box
-              sx={{ flexGrow: 1, display: { xs: "none", md: "flex" }, gap: 1 }}
-            >
+            {/* Navigation */}
+            <Box sx={{ flexGrow: 1, display: "flex", gap: 0.5 }}>
               <Button
+                component={Link}
+                href="/docs"
                 color="inherit"
-                onClick={() => scrollToSection("features")}
-                sx={{ "&:hover": { color: "primary.main" } }}
+                size="small"
+                startIcon={<MenuBookIcon sx={{ fontSize: 18 }} />}
+                sx={{
+                  px: 1.5,
+                  py: 0.75,
+                  fontSize: "0.875rem",
+                  textTransform: "none",
+                  fontWeight: isDocsPage ? 600 : 400,
+                  color: isDocsPage ? "primary.main" : "text.primary",
+                  "&:hover": { bgcolor: "rgba(255, 255, 255, 0.05)" },
+                }}
               >
-                Features
-              </Button>
-              <Button
-                color="inherit"
-                onClick={() => scrollToSection("quick-start")}
-                sx={{ "&:hover": { color: "primary.main" } }}
-              >
-                Quick Start
-              </Button>
-              <Button
-                color="inherit"
-                onClick={() => scrollToSection("cicd")}
-                sx={{ "&:hover": { color: "primary.main" } }}
-              >
-                CI/CD
-              </Button>
-              <Button
-                color="inherit"
-                onClick={() => scrollToSection("platforms")}
-                sx={{ "&:hover": { color: "primary.main" } }}
-              >
-                Platforms
-              </Button>
-              <Button
-                color="inherit"
-                onClick={() => scrollToSection("team")}
-                sx={{ "&:hover": { color: "primary.main" } }}
-              >
-                Team
+                Docs
               </Button>
             </Box>
 
+            {/* GitHub Button */}
             <Button
               variant="outlined"
+              size="small"
               href="https://github.com/chirag640/flutter_blueprint-Package"
               target="_blank"
               rel="noopener noreferrer"
-              startIcon={<GitHubIcon />}
-              sx={{ ml: 2 }}
+              startIcon={<GitHubIcon sx={{ fontSize: 18 }} />}
+              sx={{
+                px: 2,
+                py: 0.75,
+                fontSize: "0.875rem",
+                textTransform: "none",
+                borderColor: "rgba(255, 255, 255, 0.2)",
+                "&:hover": {
+                  borderColor: "primary.main",
+                  bgcolor: "rgba(2, 86, 155, 0.1)",
+                },
+              }}
             >
               GitHub
             </Button>
