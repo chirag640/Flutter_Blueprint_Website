@@ -4,8 +4,10 @@ import React from "react";
 import { Container, Box, Typography, Button, Chip, Stack } from "@mui/material";
 import RocketLaunchIcon from "@mui/icons-material/RocketLaunch";
 import CodeIcon from "@mui/icons-material/Code";
+import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { vscDarkPlus } from "react-syntax-highlighter/dist/esm/styles/prism";
+import { motion } from "framer-motion";
 
 export default function Hero() {
   const scrollToSection = (sectionId: string) => {
@@ -21,9 +23,30 @@ export default function Hero() {
         pt: { xs: 12, md: 18 },
         pb: { xs: 8, md: 12 },
         background: "linear-gradient(180deg, #121212 0%, #1A1A1A 100%)",
+        position: "relative",
+        overflow: "hidden",
       }}
     >
-      <Container maxWidth="md">
+      {/* Animated background gradient */}
+      <Box
+        component={motion.div}
+        animate={{
+          backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
+        }}
+        transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+        sx={{
+          position: "absolute",
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          background:
+            "radial-gradient(circle at 20% 50%, rgba(2, 86, 155, 0.15) 0%, transparent 50%), radial-gradient(circle at 80% 50%, rgba(0, 212, 255, 0.1) 0%, transparent 50%)",
+          backgroundSize: "200% 200%",
+          opacity: 0.6,
+        }}
+      />
+      <Container maxWidth="md" sx={{ position: "relative", zIndex: 1 }}>
         <Box
           sx={{
             textAlign: "center",
@@ -33,112 +56,166 @@ export default function Hero() {
             gap: 3,
           }}
         >
-          <Chip
-            label="Enterprise-grade Flutter scaffolding CLI"
-            color="primary"
-            icon={<CodeIcon />}
-            sx={{
-              fontSize: "0.8rem",
-              fontWeight: 600,
-              py: 2.5,
-              px: 1,
-            }}
-          />
-
-          <Typography
-            variant="h1"
-            sx={{
-              fontSize: { xs: "2.5rem", sm: "3rem", md: "3.5rem" },
-              fontWeight: 700,
-              color: "text.primary",
-              mb: 1,
-              lineHeight: 1.2,
-            }}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
           >
-            Stop wasting hours
-            <br />
-            on boilerplate.
-          </Typography>
+            <Chip
+              label="✨ Now with 100% Error-Free Generation"
+              color="primary"
+              icon={<CheckCircleIcon />}
+              sx={{
+                fontSize: "0.8rem",
+                fontWeight: 600,
+                py: 2.5,
+                px: 1,
+                boxShadow: "0 0 20px rgba(2, 86, 155, 0.3)",
+                animation: "pulse 2s ease-in-out infinite",
+                "@keyframes pulse": {
+                  "0%, 100%": {
+                    boxShadow: "0 0 20px rgba(2, 86, 155, 0.3)",
+                  },
+                  "50%": {
+                    boxShadow: "0 0 30px rgba(2, 86, 155, 0.5)",
+                  },
+                },
+              }}
+            />
+          </motion.div>
 
-          <Typography
-            variant="h5"
-            sx={{
-              fontSize: { xs: "1.125rem", sm: "1.25rem", md: "1.375rem" },
-              color: "text.secondary",
-              fontWeight: 400,
-              maxWidth: "700px",
-              mb: 2,
-              lineHeight: 1.6,
-            }}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
           >
-            Generate production-ready Flutter projects with{" "}
+            <Typography
+              variant="h1"
+              sx={{
+                fontSize: { xs: "2.5rem", sm: "3rem", md: "3.5rem" },
+                fontWeight: 700,
+                color: "text.primary",
+                mb: 1,
+                lineHeight: 1.2,
+              }}
+            >
+              Stop wasting hours
+              <br />
+              on boilerplate.
+            </Typography>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+          >
+            <Typography
+              variant="h5"
+              sx={{
+                fontSize: { xs: "1.125rem", sm: "1.25rem", md: "1.375rem" },
+                color: "text.secondary",
+                fontWeight: 400,
+                maxWidth: "700px",
+                mb: 2,
+                lineHeight: 1.6,
+              }}
+            >
+              Generate production-ready Flutter projects with{" "}
+              <Box
+                component="span"
+                sx={{ color: "primary.main", fontWeight: 600 }}
+              >
+                88 professional files
+              </Box>
+              , authentication, offline-first architecture, and{" "}
+              <Box
+                component="span"
+                sx={{ color: "success.main", fontWeight: 600 }}
+              >
+                zero compilation errors
+              </Box>
+              —in seconds.
+            </Typography>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.6, delay: 0.6 }}
+          >
+            <Stack
+              direction={{ xs: "column", sm: "row" }}
+              spacing={2}
+              sx={{ mb: 3 }}
+            >
+              <Button
+                component={motion.button}
+                whileHover={{
+                  scale: 1.05,
+                  boxShadow: "0 8px 30px rgba(2, 86, 155, 0.4)",
+                }}
+                whileTap={{ scale: 0.98 }}
+                variant="contained"
+                size="large"
+                startIcon={<RocketLaunchIcon />}
+                onClick={() => scrollToSection("quick-start")}
+                sx={{
+                  px: 4,
+                  py: 1.5,
+                  fontSize: "1rem",
+                }}
+              >
+                Get Started
+              </Button>
+              <Button
+                component={motion.button}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.98 }}
+                variant="outlined"
+                size="large"
+                href="https://pub.dev/packages/flutter_blueprint"
+                target="_blank"
+                rel="noopener noreferrer"
+                sx={{
+                  px: 4,
+                  py: 1.5,
+                  fontSize: "1rem",
+                }}
+              >
+                View on Pub.dev
+              </Button>
+            </Stack>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.8 }}
+            style={{ width: "100%", maxWidth: "500px", marginTop: "16px" }}
+          >
             <Box
-              component="span"
-              sx={{ color: "primary.main", fontWeight: 600 }}
+              sx={{
+                "& pre": {
+                  margin: 0,
+                  borderRadius: 2,
+                },
+              }}
             >
-              65+ professional files
+              <SyntaxHighlighter
+                language="bash"
+                style={vscDarkPlus}
+                customStyle={{
+                  padding: "20px 24px",
+                  backgroundColor: "#1E1E1E",
+                  border: "1px solid rgba(2, 86, 155, 0.3)",
+                  fontSize: "1rem",
+                }}
+              >
+                {`flutter_blueprint init`}
+              </SyntaxHighlighter>
             </Box>
-            , complete architecture, offline caching, and pagination—in seconds.
-          </Typography>
-
-          <Stack
-            direction={{ xs: "column", sm: "row" }}
-            spacing={2}
-            sx={{ mb: 3 }}
-          >
-            <Button
-              variant="contained"
-              size="large"
-              startIcon={<RocketLaunchIcon />}
-              onClick={() => scrollToSection("quick-start")}
-              sx={{
-                px: 4,
-                py: 1.5,
-                fontSize: "1rem",
-              }}
-            >
-              Get Started
-            </Button>
-            <Button
-              variant="outlined"
-              size="large"
-              href="https://pub.dev/packages/flutter_blueprint"
-              target="_blank"
-              rel="noopener noreferrer"
-              sx={{
-                px: 4,
-                py: 1.5,
-                fontSize: "1rem",
-              }}
-            >
-              View on Pub.dev
-            </Button>
-          </Stack>
-
-          <Box
-            sx={{
-              width: "100%",
-              maxWidth: "500px",
-              mt: 2,
-              "& pre": {
-                margin: 0,
-                borderRadius: 2,
-              },
-            }}
-          >
-            <SyntaxHighlighter
-              language="bash"
-              style={vscDarkPlus}
-              customStyle={{
-                padding: "20px 24px",
-                backgroundColor: "#1E1E1E",
-                border: "1px solid rgba(2, 86, 155, 0.3)",
-                fontSize: "1rem",
-              }}
-            >
-              {`flutter_blueprint init`}
-            </SyntaxHighlighter>
-          </Box>
+          </motion.div>
         </Box>
       </Container>
     </Box>

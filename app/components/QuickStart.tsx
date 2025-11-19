@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { Container, Box, Typography, Tabs, Tab } from "@mui/material";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { vscDarkPlus } from "react-syntax-highlighter/dist/esm/styles/prism";
+import { motion } from "framer-motion";
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -244,12 +245,65 @@ flutter_blueprint init my_app \\
   --ci github \\
   --platforms all
 
-# With CI/CD configuration
-flutter_blueprint init my_app --ci github
+# 🆕 With advanced authentication (JWT, OAuth, Biometric)
+flutter_blueprint init my_app \\
+  --state riverpod \\
+  --auth-level advanced \\
+  --jwt \\
+  --oauth \\
+  --biometric \\
+  --refresh-token
 
-# Multi-platform support
-flutter_blueprint init my_app --platforms mobile,web
-flutter_blueprint init my_app --platforms all --state riverpod`}
+# 🆕 With offline-first architecture
+flutter_blueprint init my_app \\
+  --state riverpod \\
+  --offline-level advanced \\
+  --background-sync \\
+  --conflict-resolution \\
+  --sync-interval 30
+
+# 🆕 With advanced localization
+flutter_blueprint init my_app \\
+  --localization-level advanced \\
+  --rtl \\
+  --supported-locales en,es,ar,fr,de \\
+  --default-locale en
+
+# 🆕 With advanced memory management
+flutter_blueprint init my_app \\
+  --memory advanced \\
+  --riverpod-level advanced \\
+  --code-generation
+
+# 🚀 ULTIMATE: All advanced features combined
+flutter_blueprint init enterprise_app \\
+  --state riverpod \\
+  --platforms android,ios,web \\
+  --memory advanced \\
+  --riverpod-level advanced \\
+  --localization-level advanced \\
+  --auth-level advanced \\
+  --offline-level advanced \\
+  --background-sync \\
+  --conflict-resolution \\
+  --sync-interval 30 \\
+  --theme \\
+  --localization \\
+  --env \\
+  --api \\
+  --tests \\
+  --hive \\
+  --pagination \\
+  --code-generation \\
+  --jwt \\
+  --oauth \\
+  --biometric \\
+  --refresh-token \\
+  --rtl \\
+  --supported-locales en,es,ar,fr,de \\
+  --default-locale en
+  
+# Result: 88 files, 0 errors, production-ready! 🎉`}
             </SyntaxHighlighter>
           </Box>
         </TabPanel>

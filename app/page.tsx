@@ -4,6 +4,7 @@ import React from "react";
 import { Box } from "@mui/material";
 import Header from "./components/Header";
 import Hero from "./components/Hero";
+import StatsShowcase from "./components/StatsShowcase";
 import ProblemSolution from "./components/ProblemSolution";
 import FeatureGrid from "./components/FeatureGrid";
 import QuickStart from "./components/QuickStart";
@@ -20,6 +21,7 @@ export default function Home() {
     <Box>
       <Header />
       <Hero />
+      <StatsShowcase />
       <ProblemSolution />
       <FeatureGrid />
       <QuickStart />
