@@ -149,42 +149,51 @@ export default function Hero() {
               spacing={2}
               sx={{ mb: 3 }}
             >
-              <Button
-                component={motion.button}
+              <motion.div
                 whileHover={{
                   scale: 1.05,
-                  boxShadow: "0 8px 30px rgba(2, 86, 155, 0.4)",
                 }}
                 whileTap={{ scale: 0.98 }}
-                variant="contained"
-                size="large"
-                startIcon={<RocketLaunchIcon />}
-                onClick={() => scrollToSection("quick-start")}
-                sx={{
-                  px: 4,
-                  py: 1.5,
-                  fontSize: "1rem",
-                }}
+                style={{ display: "inline-block" }}
               >
-                Get Started
-              </Button>
-              <Button
-                component={motion.button}
+                <Button
+                  variant="contained"
+                  size="large"
+                  startIcon={<RocketLaunchIcon />}
+                  onClick={() => scrollToSection("quick-start")}
+                  sx={{
+                    px: 4,
+                    py: 1.5,
+                    fontSize: "1rem",
+                    boxShadow: "0 4px 15px rgba(2, 86, 155, 0.3)",
+                    "&:hover": {
+                      boxShadow: "0 8px 30px rgba(2, 86, 155, 0.4)",
+                    },
+                  }}
+                >
+                  Get Started
+                </Button>
+              </motion.div>
+              <motion.div
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.98 }}
-                variant="outlined"
-                size="large"
-                href="https://pub.dev/packages/flutter_blueprint"
-                target="_blank"
-                rel="noopener noreferrer"
-                sx={{
-                  px: 4,
-                  py: 1.5,
-                  fontSize: "1rem",
-                }}
+                style={{ display: "inline-block" }}
               >
-                View on Pub.dev
-              </Button>
+                <Button
+                  variant="outlined"
+                  size="large"
+                  href="https://pub.dev/packages/flutter_blueprint"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  sx={{
+                    px: 4,
+                    py: 1.5,
+                    fontSize: "1rem",
+                  }}
+                >
+                  View on Pub.dev
+                </Button>
+              </motion.div>
             </Stack>
           </motion.div>
 
