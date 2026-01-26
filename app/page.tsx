@@ -24,6 +24,11 @@ import { vscDarkPlus } from "react-syntax-highlighter/dist/esm/styles/prism";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import BackToTop from "./components/BackToTop";
+import AdvancedFeatures from "./components/AdvancedFeatures";
+import ApiConfigShowcase from "./components/ApiConfigShowcase";
+import CommandBuilder from "./components/CommandBuilder";
+import ComparisonSection from "./components/ComparisonSection";
+import TechStackSection from "./components/TechStackSection";
 import Link from "next/link";
 
 export default function Home() {
@@ -639,6 +644,21 @@ flutter_blueprint init my_app`}
           </motion.div>
         </Container>
       </Box>
+
+      {/* Advanced Features Section */}
+      <AdvancedFeatures />
+
+      {/* API Configuration Showcase */}
+      <ApiConfigShowcase />
+
+      {/* Interactive Command Builder */}
+      <CommandBuilder />
+
+      {/* Technology Stack */}
+      <TechStackSection />
+
+      {/* Comparison Section */}
+      <ComparisonSection />
 
       <Footer />
     </Box>
