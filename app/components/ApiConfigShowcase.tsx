@@ -19,8 +19,7 @@ import ApiIcon from "@mui/icons-material/Api";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 import DoneIcon from "@mui/icons-material/Done";
-import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
-import { vscDarkPlus } from "react-syntax-highlighter/dist/esm/styles/prism";
+import SharedCodeBlock from "./SharedCodeBlock";
 
 const apiPresets = [
   {
@@ -347,9 +346,9 @@ export default function ApiConfigShowcase() {
                   </Box>
 
                   {/* Code */}
-                  <SyntaxHighlighter
+                  <SharedCodeBlock
+                    code={apiPresets[selectedPreset].config}
                     language="dart"
-                    style={vscDarkPlus}
                     customStyle={{
                       margin: 0,
                       padding: "1.5rem",
@@ -357,9 +356,7 @@ export default function ApiConfigShowcase() {
                       fontSize: "0.9rem",
                       lineHeight: 1.7,
                     }}
-                  >
-                    {apiPresets[selectedPreset].config}
-                  </SyntaxHighlighter>
+                  />
 
                   {/* Features */}
                   <Box

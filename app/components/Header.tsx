@@ -15,6 +15,7 @@ import GitHubIcon from "@mui/icons-material/GitHub";
 import MenuBookIcon from "@mui/icons-material/MenuBook";
 import MenuIcon from "@mui/icons-material/Menu";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 
 interface HeaderProps {
@@ -23,7 +24,7 @@ interface HeaderProps {
 }
 
 function ElevationScroll(
-  props: HeaderProps & { children: React.ReactElement }
+  props: HeaderProps & { children: React.ReactElement },
 ) {
   const { children, window } = props;
   const trigger = useScrollTrigger({
@@ -86,12 +87,13 @@ export default function Header(props: HeaderProps) {
                 "&:hover": { opacity: 0.8 },
               }}
             >
-              <Box
-                component="img"
+              <Image
                 src="/logo-full.png"
-                onError={(e: any) => (e.currentTarget.src = "/icon.png")}
                 alt="flutter_blueprint logo"
-                sx={{ height: 24, width: 24, mr: 1 }}
+                width={24}
+                height={24}
+                style={{ marginRight: 8 }}
+                priority
               />
               <Typography
                 variant="h6"

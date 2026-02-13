@@ -1,5 +1,3 @@
-"use client";
-
 import React from "react";
 import { Container, Box, Typography } from "@mui/material";
 import FolderIcon from "@mui/icons-material/Folder";

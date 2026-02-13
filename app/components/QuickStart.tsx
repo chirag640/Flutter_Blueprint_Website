@@ -2,8 +2,7 @@
 
 import React, { useState } from "react";
 import { Container, Box, Typography, Tabs, Tab } from "@mui/material";
-import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
-import { vscDarkPlus } from "react-syntax-highlighter/dist/esm/styles/prism";
+import SharedCodeBlock from "./SharedCodeBlock";
 import { motion } from "framer-motion";
 
 interface TabPanelProps {
@@ -84,32 +83,28 @@ export default function QuickStart() {
             <Typography variant="h5" sx={{ mb: 3, fontWeight: 600 }}>
               Global Activation (Recommended)
             </Typography>
-            <SyntaxHighlighter
+            <SharedCodeBlock
+              code={`dart pub global activate flutter_blueprint`}
               language="bash"
-              style={vscDarkPlus}
               customStyle={{
                 padding: "24px",
                 borderRadius: "12px",
                 fontSize: "1rem",
               }}
-            >
-              {`dart pub global activate flutter_blueprint`}
-            </SyntaxHighlighter>
+            />
             <Typography variant="body1" color="text.secondary" sx={{ mt: 3 }}>
               Once installed globally, you can use it anywhere:
             </Typography>
-            <SyntaxHighlighter
+            <SharedCodeBlock
+              code={`flutter_blueprint init`}
               language="bash"
-              style={vscDarkPlus}
               customStyle={{
                 padding: "24px",
                 borderRadius: "12px",
                 fontSize: "1rem",
                 marginTop: "16px",
               }}
-            >
-              {`flutter_blueprint init`}
-            </SyntaxHighlighter>
+            />
           </Box>
         </TabPanel>
 
@@ -123,34 +118,23 @@ export default function QuickStart() {
               key navigation, multi-select checkboxes, smart validation, and all
               the latest features including Hive and Pagination:
             </Typography>
-            <SyntaxHighlighter
+            <SharedCodeBlock
+              code={`flutter_blueprint init`}
               language="bash"
-              style={vscDarkPlus}
               customStyle={{
                 padding: "24px",
                 borderRadius: "12px",
                 fontSize: "1rem",
               }}
-            >
-              {`flutter_blueprint init`}
-            </SyntaxHighlighter>
+            />
             <Box
               sx={{ mt: 3, p: 3, bgcolor: "background.paper", borderRadius: 2 }}
             >
-              <SyntaxHighlighter
-                language="text"
-                style={vscDarkPlus}
-                customStyle={{
-                  padding: "24px",
-                  borderRadius: "12px",
-                  fontSize: "0.95rem",
-                  backgroundColor: "#1E1E1E",
-                }}
-              >
-                {`🎯 Welcome to flutter_blueprint!
-   Let's create your Flutter app with professional architecture.
+              <SharedCodeBlock
+                code={`🚀 Welcome to Flutter Blueprint Interactive Setup!
+Let's create an amazing Flutter project together.
 
-✔ 📱 App name · my_awesome_app
+✔ 📱 Enter your app name (lowercase_with_underscores) · my_awesome_app
 
 ✔ 🎯 Choose state management · bloc
    • Provider (ChangeNotifier, easy to learn)
@@ -186,7 +170,14 @@ export default function QuickStart() {
 
 🚀 Generating project structure...
 ✅ Generated 65 files successfully!`}
-              </SyntaxHighlighter>
+                language="text"
+                customStyle={{
+                  padding: "24px",
+                  borderRadius: "12px",
+                  fontSize: "0.95rem",
+                  backgroundColor: "#1E1E1E",
+                }}
+              />
             </Box>
           </Box>
         </TabPanel>
@@ -197,21 +188,15 @@ export default function QuickStart() {
               Quick Mode (For Experienced Users)
             </Typography>
             <Typography variant="body1" color="text.secondary" sx={{ mb: 3 }}>
-              Skip the wizard by providing flags for full control:
+              For experienced users, skip the wizard by directly providing flags
+              for full control:
             </Typography>
-            <SyntaxHighlighter
-              language="bash"
-              style={vscDarkPlus}
-              customStyle={{
-                padding: "24px",
-                borderRadius: "12px",
-                fontSize: "1rem",
-              }}
-            >
-              {`# Provider template (classic ChangeNotifier pattern)
+            <SharedCodeBlock
+              code={`# Provider template (simple, beginner-friendly)
 flutter_blueprint init my_app \\
   --state provider \\
   --theme \\
+  --localization \\
   --env \\
   --api \\
   --tests
@@ -304,7 +289,13 @@ flutter_blueprint init enterprise_app \\
   --default-locale en
   
 # Result: 88 files, 0 errors, production-ready! 🎉`}
-            </SyntaxHighlighter>
+              language="bash"
+              customStyle={{
+                padding: "24px",
+                borderRadius: "12px",
+                fontSize: "1rem",
+              }}
+            />
           </Box>
         </TabPanel>
       </Container>

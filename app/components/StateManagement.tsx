@@ -2,8 +2,7 @@
 
 import React, { useState } from "react";
 import { Container, Box, Typography, Tabs, Tab } from "@mui/material";
-import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
-import { vscDarkPlus } from "react-syntax-highlighter/dist/esm/styles/prism";
+import SharedCodeBlock from "./SharedCodeBlock";
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -87,16 +86,8 @@ export default function StateManagement() {
             <Typography variant="h6" sx={{ mb: 2, fontWeight: 600 }}>
               Example State Management:
             </Typography>
-            <SyntaxHighlighter
-              language="dart"
-              style={vscDarkPlus}
-              customStyle={{
-                padding: "24px",
-                borderRadius: "12px",
-                fontSize: "0.9rem",
-              }}
-            >
-              {`// home_provider.dart
+            <SharedCodeBlock
+              code={`// home_provider.dart
 class HomeProvider extends ChangeNotifier {
   bool _isLoading = false;
   int _counter = 0;
@@ -116,7 +107,13 @@ Consumer<HomeProvider>(
     return Text('Counter: \${provider.counter}');
   },
 )`}
-            </SyntaxHighlighter>
+              language="dart"
+              customStyle={{
+                padding: "24px",
+                borderRadius: "12px",
+                fontSize: "0.9rem",
+              }}
+            />
           </Box>
         </TabPanel>
 
@@ -132,16 +129,8 @@ Consumer<HomeProvider>(
             <Typography variant="h6" sx={{ mb: 2, fontWeight: 600 }}>
               Example State Management:
             </Typography>
-            <SyntaxHighlighter
-              language="dart"
-              style={vscDarkPlus}
-              customStyle={{
-                padding: "24px",
-                borderRadius: "12px",
-                fontSize: "0.9rem",
-              }}
-            >
-              {`// home_provider.dart
+            <SharedCodeBlock
+              code={`// home_provider.dart
 class HomeState {
   final bool isLoading;
   final int counter;
@@ -184,7 +173,7 @@ class HomeContent extends ConsumerWidget {
     );
   }
 }`}
-            </SyntaxHighlighter>
+            />
 
             <Box
               sx={{ mt: 3, p: 3, bgcolor: "background.paper", borderRadius: 2 }}

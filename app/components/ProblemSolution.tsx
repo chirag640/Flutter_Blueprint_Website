@@ -1,5 +1,3 @@
-"use client";
-
 import React from "react";
 import { Container, Box, Typography, Grid } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";

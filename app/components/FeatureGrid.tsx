@@ -1,5 +1,3 @@
-"use client";
-
 import React from "react";
 import {
   Container,
@@ -9,7 +7,6 @@ import {
   Card,
   CardContent,
 } from "@mui/material";
-import { motion } from "framer-motion";
 import ArchitectureIcon from "@mui/icons-material/Architecture";
 import StorageIcon from "@mui/icons-material/Storage";
 import ApiIcon from "@mui/icons-material/Api";
@@ -154,19 +151,8 @@ export default function FeatureGrid() {
         <Grid container spacing={3}>
           {features.map((feature, index) => (
             <Grid item xs={12} sm={6} md={6} lg={4} key={index}>
-              <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.05 }}
-              >
+              <div>
                 <Box
-                  component={motion.div}
-                  whileHover={{
-                    scale: 1.03,
-                    y: -5,
-                    boxShadow: `0 12px 40px ${feature.color}33`,
-                  }}
                   sx={{
                     height: "100%",
                     p: 3,
@@ -179,6 +165,8 @@ export default function FeatureGrid() {
                     "&:hover": {
                       borderColor: feature.color,
                       bgcolor: `${feature.color}08`,
+                      transform: "translateY(-5px) scale(1.03)",
+                      boxShadow: `0 12px 40px ${feature.color}33`,
                     },
                     "&::before": {
                       content: '""',
@@ -238,7 +226,7 @@ export default function FeatureGrid() {
                     {feature.description}
                   </Typography>
                 </Box>
-              </motion.div>
+              </div>
             </Grid>
           ))}
         </Grid>

@@ -1,8 +1,5 @@
-"use client";
-
 import React from "react";
 import { Box, Container, Typography, Grid, Stack, Chip } from "@mui/material";
-import { motion } from "framer-motion";
 
 const technologies = [
   {
@@ -127,12 +124,7 @@ export default function TechStackSection() {
       <Container maxWidth="lg">
         {/* Header */}
         <Box sx={{ textAlign: "center", mb: 8 }}>
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-          >
+          <Box>
             <Typography
               variant="h2"
               sx={{
@@ -156,19 +148,13 @@ export default function TechStackSection() {
             >
               Built with the most popular and reliable Flutter packages
             </Typography>
-          </motion.div>
+          </Box>
         </Box>
-
         {/* Technology Grid */}
         <Grid container spacing={3} sx={{ mb: 10 }}>
           {technologies.map((category, catIndex) => (
             <Grid item xs={12} sm={6} md={3} key={catIndex}>
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.4, delay: catIndex * 0.1 }}
-                viewport={{ once: true }}
-              >
+              <div>
                 <Box
                   sx={{
                     p: 3,
@@ -206,19 +192,13 @@ export default function TechStackSection() {
                     ))}
                   </Stack>
                 </Box>
-              </motion.div>
+              </div>
             </Grid>
           ))}
         </Grid>
-
         {/* What's Generated Section */}
         <Box sx={{ textAlign: "center", mb: 6 }}>
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-          >
+          <Box>
             <Typography
               variant="h3"
               sx={{
@@ -238,21 +218,14 @@ export default function TechStackSection() {
             >
               A complete, organized project structure ready for production
             </Typography>
-          </motion.div>
+          </Box>
         </Box>
-
+        \n\n{" "}
         <Grid container spacing={3}>
           {generatedFolders.map((folder, index) => (
             <Grid item xs={12} sm={6} md={4} key={index}>
-              <motion.div
-                initial={{ opacity: 0, scale: 0.95 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.4, delay: index * 0.1 }}
-                viewport={{ once: true }}
-              >
+              <div>
                 <Box
-                  component={motion.div}
-                  whileHover={{ y: -5 }}
                   sx={{
                     p: 3,
                     borderRadius: "16px",
@@ -305,7 +278,7 @@ export default function TechStackSection() {
                     {folder.description}
                   </Typography>
                 </Box>
-              </motion.div>
+              </div>
             </Grid>
           ))}
         </Grid>

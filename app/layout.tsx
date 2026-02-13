@@ -20,6 +20,10 @@ export const metadata: Metadata = {
     "clean architecture",
   ],
   authors: [{ name: "Chirag Chaudhary" }],
+  icons: {
+    icon: [{ url: "/favicon.png", type: "image/png" }],
+    apple: [{ url: "/logo-full.png" }],
+  },
   openGraph: {
     title: "flutter_blueprint - Enterprise-grade Flutter App Scaffolding",
     description:
@@ -35,19 +39,6 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link
-          rel="preconnect"
-          href="https://fonts.gstatic.com"
-          crossOrigin="anonymous"
-        />
-        {/* Favicon: prefer the provided PNG placed at /public/favicon.png (use icon.png as fallback) */}
-        <link rel="icon" href="/favicon.png" type="image/png" />
-        <link rel="icon" href="/icon.png" type="image/png" />
-        <link rel="apple-touch-icon" href="/logo-full.png" />
-        <link rel="apple-touch-icon" href="/icon.png" />
-      </head>
       <body className={inter.className}>
         <AppRouterCacheProvider>
           <ThemeProvider theme={theme}>

@@ -1,13 +1,10 @@
-"use client";
-
 import React from "react";
 import { Container, Box, Typography, Grid } from "@mui/material";
 import ShareIcon from "@mui/icons-material/Share";
 import SpeedIcon from "@mui/icons-material/Speed";
 import VerifiedIcon from "@mui/icons-material/Verified";
 import GroupWorkIcon from "@mui/icons-material/GroupWork";
-import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
-import { vscDarkPlus } from "react-syntax-highlighter/dist/esm/styles/prism";
+import CodeBlock from "./CodeBlock";
 
 const benefits = [
   {
@@ -116,16 +113,9 @@ export default function TeamCollaboration() {
             <Typography variant="h6" sx={{ mb: 2, fontWeight: 600 }}>
               Team Workflow Example:
             </Typography>
-            <SyntaxHighlighter
+            <CodeBlock
               language="bash"
-              style={vscDarkPlus}
-              customStyle={{
-                padding: "24px",
-                borderRadius: "12px",
-                fontSize: "0.9rem",
-              }}
-            >
-              {`# Engineering lead creates shared config
+              code={`# Engineering lead creates shared config
 flutter_blueprint share import ./company_standard.yaml
 
 # All team members use it
@@ -138,7 +128,7 @@ flutter_blueprint share list
 flutter_blueprint share import <file>
 flutter_blueprint share export <name> <output>
 flutter_blueprint share delete <name>`}
-            </SyntaxHighlighter>
+            />
           </Grid>
         </Grid>
 

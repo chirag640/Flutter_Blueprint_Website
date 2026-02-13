@@ -1,5 +1,3 @@
-"use client";
-
 import React from "react";
 import { Container, Box, Typography, Button } from "@mui/material";
 import RocketLaunchIcon from "@mui/icons-material/RocketLaunch";

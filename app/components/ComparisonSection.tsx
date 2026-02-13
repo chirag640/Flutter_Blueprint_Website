@@ -1,8 +1,5 @@
-"use client";
-
 import React from "react";
 import { Box, Container, Typography, Grid, Stack, Chip } from "@mui/material";
-import { motion } from "framer-motion";
 import CheckIcon from "@mui/icons-material/Check";
 import CloseIcon from "@mui/icons-material/Close";
 
@@ -146,12 +143,7 @@ export default function ComparisonSection() {
       <Container maxWidth="lg">
         {/* Header */}
         <Box sx={{ textAlign: "center", mb: 8 }}>
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-          >
+          <Box>
             <Typography
               variant="h2"
               sx={{
@@ -176,7 +168,7 @@ export default function ComparisonSection() {
               See how Flutter Blueprint compares to manual setup and other CLI
               tools
             </Typography>
-          </motion.div>
+          </Box>
         </Box>
 
         {/* Comparison Table */}
@@ -235,13 +227,7 @@ export default function ComparisonSection() {
 
           {/* Feature Rows */}
           {comparisonData.map((row, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.3, delay: index * 0.05 }}
-              viewport={{ once: true }}
-            >
+            <div key={index}>
               <Grid
                 container
                 alignItems="center"
@@ -277,17 +263,12 @@ export default function ComparisonSection() {
                   </Box>
                 </Grid>
               </Grid>
-            </motion.div>
+            </div>
           ))}
         </Box>
 
         {/* Time Saved Box */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.3 }}
-          viewport={{ once: true }}
-        >
+        <Box>
           <Box
             sx={{
               mt: 6,
@@ -353,7 +334,7 @@ export default function ComparisonSection() {
               </Grid>
             </Grid>
           </Box>
-        </motion.div>
+        </Box>
       </Container>
     </Box>
   );

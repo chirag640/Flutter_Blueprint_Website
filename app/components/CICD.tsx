@@ -2,8 +2,7 @@
 
 import React, { useState } from "react";
 import { Container, Box, Typography, Tabs, Tab } from "@mui/material";
-import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
-import { vscDarkPlus } from "react-syntax-highlighter/dist/esm/styles/prism";
+import SharedCodeBlock from "./SharedCodeBlock";
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -95,16 +94,8 @@ export default function CICD() {
                 flutter_blueprint init my_app --ci github
               </code>
             </Typography>
-            <SyntaxHighlighter
-              language="yaml"
-              style={vscDarkPlus}
-              customStyle={{
-                padding: "24px",
-                borderRadius: "12px",
-                fontSize: "0.9rem",
-              }}
-            >
-              {`name: CI/CD Pipeline
+            <SharedCodeBlock
+              code={`name: CI/CD Pipeline
 
 on:
   push:
@@ -162,16 +153,8 @@ jobs:
                 flutter_blueprint init my_app --ci gitlab
               </code>
             </Typography>
-            <SyntaxHighlighter
-              language="yaml"
-              style={vscDarkPlus}
-              customStyle={{
-                padding: "24px",
-                borderRadius: "12px",
-                fontSize: "0.9rem",
-              }}
-            >
-              {`stages:
+            <SharedCodeBlock
+              code={`stages:
   - analyze
   - test
   - build
@@ -208,7 +191,13 @@ build:android:
     paths:
       - build/app/outputs/flutter-apk/app-release.apk
     expire_in: 7 days`}
-            </SyntaxHighlighter>
+              language="yaml"
+              customStyle={{
+                padding: "24px",
+                borderRadius: "12px",
+                fontSize: "0.9rem",
+              }}
+            />
           </Box>
         </TabPanel>
 
@@ -229,16 +218,8 @@ build:android:
                 flutter_blueprint init my_app --ci azure
               </code>
             </Typography>
-            <SyntaxHighlighter
-              language="yaml"
-              style={vscDarkPlus}
-              customStyle={{
-                padding: "24px",
-                borderRadius: "12px",
-                fontSize: "0.9rem",
-              }}
-            >
-              {`trigger:
+            <SharedCodeBlock
+              code={`trigger:
   branches:
     include:
       - main
@@ -279,7 +260,13 @@ stages:
             inputs:
               pathToPublish: 'build/app/outputs/flutter-apk'
               artifactName: 'android-apk'`}
-            </SyntaxHighlighter>
+              language="yaml"
+              customStyle={{
+                padding: "24px",
+                borderRadius: "12px",
+                fontSize: "0.9rem",
+              }}
+            />
           </Box>
         </TabPanel>
 

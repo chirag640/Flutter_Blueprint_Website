@@ -22,8 +22,7 @@ import LoginIcon from "@mui/icons-material/Login";
 import ApiIcon from "@mui/icons-material/Api";
 import TuneIcon from "@mui/icons-material/Tune";
 import SyncIcon from "@mui/icons-material/Sync";
-import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
-import { vscDarkPlus } from "react-syntax-highlighter/dist/esm/styles/prism";
+import SharedCodeBlock from "./SharedCodeBlock";
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -556,19 +555,16 @@ export default function AdvancedFeatures() {
                           example.dart
                         </Typography>
                       </Box>
-                      <SyntaxHighlighter
+                      <SharedCodeBlock
+                        code={feature.code}
                         language="dart"
-                        style={vscDarkPlus}
                         customStyle={{
-                          margin: 0,
-                          padding: "1.5rem",
                           background: "transparent",
                           fontSize: "0.85rem",
                           lineHeight: 1.6,
+                          padding: "1.5rem",
                         }}
-                      >
-                        {feature.code}
-                      </SyntaxHighlighter>
+                      />
                     </Box>
                   </Grid>
                 </Grid>

@@ -5,8 +5,7 @@ import { Container, Box, Typography, Button, Chip, Stack } from "@mui/material";
 import RocketLaunchIcon from "@mui/icons-material/RocketLaunch";
 import CodeIcon from "@mui/icons-material/Code";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
-import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
-import { vscDarkPlus } from "react-syntax-highlighter/dist/esm/styles/prism";
+import SharedCodeBlock from "./SharedCodeBlock";
 import { motion } from "framer-motion";
 
 export default function Hero() {
@@ -211,18 +210,16 @@ export default function Hero() {
                 },
               }}
             >
-              <SyntaxHighlighter
+              <SharedCodeBlock
+                code={`flutter_blueprint init`}
                 language="bash"
-                style={vscDarkPlus}
                 customStyle={{
                   padding: "20px 24px",
                   backgroundColor: "#1E1E1E",
                   border: "1px solid rgba(2, 86, 155, 0.3)",
                   fontSize: "1rem",
                 }}
-              >
-                {`flutter_blueprint init`}
-              </SyntaxHighlighter>
+              />
             </Box>
           </motion.div>
         </Box>

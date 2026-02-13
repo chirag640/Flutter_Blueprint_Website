@@ -1,5 +1,3 @@
-"use client";
-
 import React from "react";
 import { Container, Box, Typography, Grid, Stack, Chip } from "@mui/material";
 import PhoneIphoneIcon from "@mui/icons-material/PhoneIphone";
@@ -8,8 +6,7 @@ import LanguageIcon from "@mui/icons-material/Language";
 import DesktopWindowsIcon from "@mui/icons-material/DesktopWindows";
 import AppleIcon from "@mui/icons-material/Apple";
 import AndroidIcon from "@mui/icons-material/Android";
-import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
-import { vscDarkPlus } from "react-syntax-highlighter/dist/esm/styles/prism";
+import CodeBlock from "./CodeBlock";
 
 export default function MultiPlatform() {
   return (
@@ -99,16 +96,9 @@ export default function MultiPlatform() {
             <Typography variant="h6" sx={{ mb: 2, fontWeight: 600 }}>
               Quick Start Examples
             </Typography>
-            <SyntaxHighlighter
+            <CodeBlock
               language="bash"
-              style={vscDarkPlus}
-              customStyle={{
-                padding: "24px",
-                borderRadius: "12px",
-                fontSize: "0.95rem",
-              }}
-            >
-              {`# Mobile + Web
+              code={`# Mobile + Web
 flutter_blueprint init my_app --platforms mobile,web
 
 # All platforms (universal app)
@@ -116,7 +106,7 @@ flutter_blueprint init my_app --platforms all --state riverpod
 
 # Desktop only
 flutter_blueprint init my_desktop_app --platforms desktop`}
-            </SyntaxHighlighter>
+            />
 
             <Box
               sx={{
