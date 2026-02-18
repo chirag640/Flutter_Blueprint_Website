@@ -132,7 +132,13 @@ jobs:
         with:
           name: android-apk
           path: build/app/outputs/flutter-apk/app-release.apk`}
-            </SyntaxHighlighter>
+              language="yaml"
+              customStyle={{
+                padding: "24px",
+                borderRadius: "12px",
+                fontSize: "0.9rem",
+              }}
+            />
           </Box>
         </TabPanel>
 
