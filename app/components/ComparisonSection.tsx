@@ -11,7 +11,7 @@ const comparisonData = [
     other_cli: "partial",
   },
   {
-    feature: "43+ Production Files",
+    feature: "88+ Production Files",
     flutter_blueprint: true,
     manual: false,
     other_cli: false,
@@ -72,6 +72,30 @@ const comparisonData = [
   },
   {
     feature: "Team Configuration Sharing",
+    flutter_blueprint: true,
+    manual: false,
+    other_cli: false,
+  },
+  {
+    feature: "Responsive Design Built-in",
+    flutter_blueprint: true,
+    manual: false,
+    other_cli: false,
+  },
+  {
+    feature: "Analytics Integration",
+    flutter_blueprint: true,
+    manual: false,
+    other_cli: false,
+  },
+  {
+    feature: "Add Feature Command",
+    flutter_blueprint: true,
+    manual: false,
+    other_cli: false,
+  },
+  {
+    feature: "Smart Auto-Update System",
     flutter_blueprint: true,
     manual: false,
     other_cli: false,

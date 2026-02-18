@@ -55,7 +55,8 @@ export default function QuickStart() {
             color="text.secondary"
             sx={{ fontWeight: 400 }}
           >
-            Choose your workflow: Interactive wizard or quick command
+            Choose your workflow: Interactive wizard, quick command, or add to
+            existing
           </Typography>
         </Box>
 
@@ -75,6 +76,7 @@ export default function QuickStart() {
             <Tab label="1. Installation" />
             <Tab label="2. Interactive Wizard" />
             <Tab label="3. Quick Mode" />
+            <Tab label="4. Add to Existing" />
           </Tabs>
         </Box>
 
@@ -196,28 +198,27 @@ Let's create an amazing Flutter project together.
 flutter_blueprint init my_app \\
   --state provider \\
   --theme \\
-  --localization \\
-  --env \\
   --api \\
   --tests
 
-# Riverpod template (compile-time safe with StateNotifier)
-flutter_blueprint init my_app \\
-  --state riverpod \\
-  --theme \\
-  --env \\
-  --api \\
-  --tests \\
-  --no-localization
-
-# With Hive database and Pagination
+# Bloc template
 flutter_blueprint init my_app \\
   --state bloc \\
+  --theme \\
+  --api \\
   --hive \\
-  --pagination \\
-  --api
+  --pagination
 
-# Full-featured app with everything
+# With CI/CD + analytics (real flags)
+flutter_blueprint init my_app \\
+  --state riverpod \\
+  --api \\
+  --theme \\
+  --tests \\
+  --ci github \\
+  --analytics sentry
+
+# Full-featured mobile app
 flutter_blueprint init my_app \\
   --state bloc \\
   --api \\
@@ -228,67 +229,63 @@ flutter_blueprint init my_app \\
   --env \\
   --tests \\
   --ci github \\
-  --platforms all
-
-# 🆕 With advanced authentication (JWT, OAuth, Biometric)
-flutter_blueprint init my_app \\
-  --state riverpod \\
-  --auth-level advanced \\
-  --jwt \\
-  --oauth \\
-  --biometric \\
-  --refresh-token
-
-# 🆕 With offline-first architecture
-flutter_blueprint init my_app \\
-  --state riverpod \\
-  --offline-level advanced \\
-  --background-sync \\
-  --conflict-resolution \\
-  --sync-interval 30
-
-# 🆕 With advanced localization
-flutter_blueprint init my_app \\
-  --localization-level advanced \\
-  --rtl \\
-  --supported-locales en,es,ar,fr,de \\
-  --default-locale en
-
-# 🆕 With advanced memory management
-flutter_blueprint init my_app \\
-  --memory advanced \\
-  --riverpod-level advanced \\
-  --code-generation
-
-# 🚀 ULTIMATE: All advanced features combined
-flutter_blueprint init enterprise_app \\
-  --state riverpod \\
-  --platforms android,ios,web \\
-  --memory advanced \\
-  --riverpod-level advanced \\
-  --localization-level advanced \\
-  --auth-level advanced \\
-  --offline-level advanced \\
-  --background-sync \\
-  --conflict-resolution \\
-  --sync-interval 30 \\
-  --theme \\
-  --localization \\
-  --env \\
-  --api \\
-  --tests \\
-  --hive \\
-  --pagination \\
-  --code-generation \\
-  --jwt \\
-  --oauth \\
-  --biometric \\
-  --refresh-token \\
-  --rtl \\
-  --supported-locales en,es,ar,fr,de \\
-  --default-locale en
+  --analytics firebase \\
+  --websocket \\
+  --push-notifications \\
+  --maps \\
+  --social-auth
   
-# Result: 88 files, 0 errors, production-ready! 🎉`}
+# Result: 88+ files, 0 errors, production-ready! 🎉`}
+              language="bash"
+              customStyle={{
+                padding: "24px",
+                borderRadius: "12px",
+                fontSize: "1rem",
+              }}
+            />
+          </Box>
+        </TabPanel>
+
+        <TabPanel value={value} index={3}>
+          <Box sx={{ maxWidth: "900px", mx: "auto" }}>
+            <Typography variant="h5" sx={{ mb: 3, fontWeight: 600 }}>
+              Add a Feature to an Existing Project
+            </Typography>
+            <Typography variant="body1" color="text.secondary" sx={{ mb: 3 }}>
+              Already have a flutter_blueprint project? Use{" "}
+              <code>add feature</code> to scaffold a complete feature module —
+              state management, repository, model, widgets, and tests — without
+              touching any existing files.
+            </Typography>
+            <SharedCodeBlock
+              code={`# Navigate to your existing project
+cd my_app
+
+# Add a new feature module
+flutter_blueprint add feature cart
+
+# What gets generated:
+# lib/features/cart/
+#   ├── data/
+#   │   ├── models/cart_model.dart
+#   │   └── repositories/cart_repository.dart
+#   └── presentation/
+#       ├── bloc/          ← matches your project's state management
+#       │   ├── cart_bloc.dart
+#       │   ├── cart_event.dart
+#       │   └── cart_state.dart
+#       ├── pages/
+#       │   └── cart_page.dart
+#       └── widgets/
+#           └── cart_content.dart
+# test/features/cart/
+#   └── cart_test.dart
+
+# Examples
+flutter_blueprint add feature auth
+flutter_blueprint add feature profile
+flutter_blueprint add feature checkout
+flutter_blueprint add feature settings`}
               language="bash"
               customStyle={{
                 padding: "24px",

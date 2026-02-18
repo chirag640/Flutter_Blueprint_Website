@@ -61,7 +61,7 @@ export default function Hero() {
             transition={{ duration: 0.6 }}
           >
             <Chip
-              label="✨ Now with 100% Error-Free Generation"
+              label="✨ v2.0.0 — AppResponsive + Add Feature Command"
               color="primary"
               icon={<CheckCircleIcon />}
               sx={{
@@ -125,9 +125,9 @@ export default function Hero() {
                 component="span"
                 sx={{ color: "primary.main", fontWeight: 600 }}
               >
-                88 professional files
+                88+ professional files
               </Box>
-              , authentication, offline-first architecture, and{" "}
+              , built-in responsive design, analytics, and{" "}
               <Box
                 component="span"
                 sx={{ color: "success.main", fontWeight: 600 }}

@@ -33,11 +33,7 @@ interface CommandOptions {
   hive: boolean;
   pagination: boolean;
   ci: string;
-  security: string;
-  auth: string;
-  offline: string;
-  memory: string;
-  localization: string;
+  analytics: string;
   websocket: boolean;
   notifications: boolean;
   maps: boolean;
@@ -53,11 +49,7 @@ const defaultOptions: CommandOptions = {
   hive: false,
   pagination: false,
   ci: "none",
-  security: "none",
-  auth: "none",
-  offline: "none",
-  memory: "none",
-  localization: "none",
+  analytics: "none",
   websocket: false,
   notifications: false,
   maps: false,
@@ -101,25 +93,9 @@ export default function CommandBuilder() {
       cmd += ` --ci ${options.ci}`;
       files += 2;
     }
-    if (options.security !== "none") {
-      cmd += ` --security ${options.security}`;
-      files += options.security === "enterprise" ? 12 : 6;
-    }
-    if (options.auth !== "none") {
-      cmd += ` --auth-level ${options.auth}`;
-      files += options.auth === "advanced" ? 10 : 5;
-    }
-    if (options.offline !== "none") {
-      cmd += ` --offline-level ${options.offline}`;
-      files += options.offline === "advanced" ? 12 : 6;
-    }
-    if (options.memory !== "none") {
-      cmd += ` --memory ${options.memory}`;
-      files += options.memory === "advanced" ? 8 : 4;
-    }
-    if (options.localization !== "none") {
-      cmd += ` --localization-level ${options.localization}`;
-      files += options.localization === "advanced" ? 6 : 3;
+    if (options.analytics !== "none") {
+      cmd += ` --analytics ${options.analytics}`;
+      files += 3;
     }
     if (options.websocket) {
       cmd += " --websocket";
@@ -410,39 +386,14 @@ export default function CommandBuilder() {
                   </Grid>
                   <Grid item xs={6}>
                     <OptionSelect
-                      label="Security Level"
-                      value={options.security}
+                      label="Analytics"
+                      value={options.analytics}
                       options={[
                         { value: "none", label: "None" },
-                        { value: "basic", label: "Basic" },
-                        { value: "standard", label: "Standard" },
-                        { value: "enterprise", label: "Enterprise" },
+                        { value: "firebase", label: "Firebase" },
+                        { value: "sentry", label: "Sentry" },
                       ]}
-                      onChange={(v) => setOptions({ ...options, security: v })}
-                    />
-                  </Grid>
-                  <Grid item xs={6}>
-                    <OptionSelect
-                      label="Authentication"
-                      value={options.auth}
-                      options={[
-                        { value: "none", label: "None" },
-                        { value: "basic", label: "Basic" },
-                        { value: "advanced", label: "Advanced" },
-                      ]}
-                      onChange={(v) => setOptions({ ...options, auth: v })}
-                    />
-                  </Grid>
-                  <Grid item xs={6}>
-                    <OptionSelect
-                      label="Offline Support"
-                      value={options.offline}
-                      options={[
-                        { value: "none", label: "None" },
-                        { value: "basic", label: "Basic" },
-                        { value: "advanced", label: "Advanced" },
-                      ]}
-                      onChange={(v) => setOptions({ ...options, offline: v })}
+                      onChange={(v) => setOptions({ ...options, analytics: v })}
                     />
                   </Grid>
                 </Grid>

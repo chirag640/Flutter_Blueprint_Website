@@ -21,6 +21,9 @@ import LockIcon from "@mui/icons-material/Lock";
 import CloudOffIcon from "@mui/icons-material/CloudOff";
 import LanguageIcon from "@mui/icons-material/Language";
 import MemoryIcon from "@mui/icons-material/Memory";
+import PhoneAndroidIcon from "@mui/icons-material/PhoneAndroid";
+import SystemUpdateIcon from "@mui/icons-material/SystemUpdate";
+import AnalyticsIcon from "@mui/icons-material/Analytics";
 
 const features = [
   {
@@ -118,6 +121,30 @@ const features = [
       "Production-ready pagination with infinite scroll, pull-to-refresh, and skeleton loaders.",
     badge: "Core",
     color: "#02569B",
+  },
+  {
+    icon: <PhoneAndroidIcon sx={{ fontSize: 48 }} />,
+    title: "AppResponsive Design",
+    description:
+      "Zero-dependency responsive utility (390×844 base, pure MediaQuery). context.rs(), rFont(), rIcon(), rVSpace() — all auto-generated in every mobile project.",
+    badge: "v2.0",
+    color: "#00BCD4",
+  },
+  {
+    icon: <AnalyticsIcon sx={{ fontSize: 48 }} />,
+    title: "Analytics & Error Tracking",
+    description:
+      "Pass --analytics firebase or --analytics sentry. Crashlytics / Sentry SDK, HTTP interceptors, and main.dart initialization — all scaffolded automatically.",
+    badge: "v2.0",
+    color: "#FF9800",
+  },
+  {
+    icon: <SystemUpdateIcon sx={{ fontSize: 48 }} />,
+    title: "Smart Update System",
+    description:
+      "Background version check with 24-hour cache. Shows a single aligned update banner after project creation — never slows down your commands.",
+    badge: "FIXED",
+    color: "#9C27B0",
   },
 ];
 

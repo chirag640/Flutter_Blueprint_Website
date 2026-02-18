@@ -26,6 +26,7 @@ import ApiConfigShowcase from "./components/ApiConfigShowcase";
 import CommandBuilder from "./components/CommandBuilder";
 import ComparisonSection from "./components/ComparisonSection";
 import TechStackSection from "./components/TechStackSection";
+import WhatsNew from "./components/WhatsNew";
 import Link from "next/link";
 
 // Static Generation - This is a marketing page that doesn't need SSR
@@ -605,6 +606,9 @@ flutter_blueprint init my_app`}
           </Stack>
         </Container>
       </Box>
+
+      {/* What's New in v2.0.0 */}
+      <WhatsNew />
 
       {/* Advanced Features Section */}
       <AdvancedFeatures />

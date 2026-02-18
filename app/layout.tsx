@@ -10,7 +10,7 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: "flutter_blueprint - Enterprise-grade Flutter App Scaffolding",
   description:
-    "Generate production-ready Flutter projects with 43+ professional files, complete architecture, and more—in seconds.",
+    "Generate production-ready Flutter projects with 88+ professional files, complete architecture, AppResponsive design system, and zero compilation errors—in seconds.",
   keywords: [
     "Flutter",
     "CLI",
@@ -18,6 +18,8 @@ export const metadata: Metadata = {
     "boilerplate",
     "architecture",
     "clean architecture",
+    "responsive design",
+    "flutter blueprint v2",
   ],
   authors: [{ name: "Chirag Chaudhary" }],
   icons: {
