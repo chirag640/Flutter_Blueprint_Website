@@ -28,21 +28,22 @@ import ComparisonSection from "./components/ComparisonSection";
 import TechStackSection from "./components/TechStackSection";
 import WhatsNew from "./components/WhatsNew";
 import Link from "next/link";
+import { buildPageMetadata } from "./seo";
 
 // Static Generation - This is a marketing page that doesn't need SSR
 export const dynamic = "force-static";
 export const revalidate = 3600; // Revalidate every hour
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildPageMetadata({
   title: "Flutter Blueprint - Production-Ready Flutter Architecture Generator",
   description:
-    "Generate scalable Flutter projects with MVVM architecture, clean code patterns, state management (Riverpod/BLoC), REST API integration, offline-first SQLite, CI/CD pipelines, and comprehensive testing in seconds.",
+    "Generate scalable Flutter projects with clean architecture, state management options, release guardrails, and CI/CD automation.",
+  path: "/",
   keywords: [
     "flutter",
     "flutter cli",
     "flutter generator",
     "flutter architecture",
-    "mvvm flutter",
     "clean architecture",
     "flutter boilerplate",
     "riverpod",
@@ -50,21 +51,7 @@ export const metadata: Metadata = {
     "flutter starter",
     "flutter template",
   ],
-  authors: [{ name: "Flutter Blueprint" }],
-  openGraph: {
-    title: "Flutter Blueprint - Production-Ready Flutter Architecture",
-    description:
-      "Generate enterprise-grade Flutter apps with best practices built-in. MVVM, state management, offline-first, CI/CD, and more.",
-    type: "website",
-    locale: "en_US",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Flutter Blueprint",
-    description:
-      "Production-ready Flutter project generator with MVVM, clean architecture, and CI/CD",
-  },
-};
+});
 
 export default function Home() {
   return (
@@ -602,6 +589,29 @@ flutter_blueprint init my_app`}
               }}
             >
               View on Pub.dev
+            </Button>
+          </Stack>
+          <Stack
+            direction={{ xs: "column", sm: "row" }}
+            spacing={2}
+            justifyContent="center"
+            sx={{ mt: 2 }}
+          >
+            <Button
+              component={Link}
+              href="/compare"
+              variant="text"
+              sx={{ color: "#00d4ff", textTransform: "none" }}
+            >
+              Compare With Alternatives
+            </Button>
+            <Button
+              component={Link}
+              href="/migration"
+              variant="text"
+              sx={{ color: "#00d4ff", textTransform: "none" }}
+            >
+              Migration Guide
             </Button>
           </Stack>
         </Container>

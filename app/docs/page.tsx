@@ -27,6 +27,7 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 import BackToTop from "../components/BackToTop";
 import CodeBlock from "../components/CodeBlock";
+import { trackFunnelEvent } from "../lib/funnel";
 
 export default function DocsPage() {
   const [activeSection, setActiveSection] = useState("quick-start");
@@ -353,6 +354,19 @@ export default function DocsPage() {
                           Install the CLI tool globally using Dart pub:
                         </Typography>
                         <CodeBlock code="dart pub global activate flutter_blueprint" />
+                        <Button
+                          variant="outlined"
+                          onClick={() =>
+                            trackFunnelEvent("docs_install_click", {
+                              source: "docs_quick_start",
+                              command:
+                                "dart pub global activate flutter_blueprint",
+                            })
+                          }
+                          sx={{ mt: 1.5, textTransform: "none" }}
+                        >
+                          Mark Install Step Done
+                        </Button>
                       </Box>
 
                       <Box>
@@ -674,6 +688,29 @@ export default function DocsPage() {
                           language="bash"
                         />
                       </Box>
+                    </Stack>
+
+                    <Stack
+                      direction={{ xs: "column", sm: "row" }}
+                      spacing={1.5}
+                      sx={{ mt: 4 }}
+                    >
+                      <Button
+                        component={Link}
+                        href="/compare"
+                        variant="text"
+                        sx={{ textTransform: "none", color: "#00d4ff" }}
+                      >
+                        Compare With Alternatives
+                      </Button>
+                      <Button
+                        component={Link}
+                        href="/migration"
+                        variant="text"
+                        sx={{ textTransform: "none", color: "#00d4ff" }}
+                      >
+                        Migration Playbook
+                      </Button>
                     </Stack>
                   </Paper>
                 </Box>

@@ -1,37 +1,41 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import { AppRouterCacheProvider } from "@mui/material-nextjs/v14-appRouter";
 import { ThemeProvider } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 import theme from "./theme";
+import { buildPageMetadata } from "./seo";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "flutter_blueprint - Enterprise-grade Flutter App Scaffolding",
-  description:
-    "Generate production-ready Flutter projects with 88+ professional files, complete architecture, AppResponsive design system, and zero compilation errors—in seconds.",
-  keywords: [
-    "Flutter",
-    "CLI",
-    "scaffolding",
-    "boilerplate",
-    "architecture",
-    "clean architecture",
-    "responsive design",
-    "flutter blueprint v2",
-  ],
+  ...buildPageMetadata({
+    title: "flutter_blueprint - Enterprise-grade Flutter App Scaffolding",
+    description:
+      "Generate production-ready Flutter projects with architecture, release guardrails, and enterprise quality workflows in seconds.",
+    path: "/",
+    keywords: [
+      "Flutter",
+      "CLI",
+      "scaffolding",
+      "boilerplate",
+      "architecture",
+      "clean architecture",
+      "responsive design",
+      "flutter blueprint",
+    ],
+  }),
   authors: [{ name: "Chirag Chaudhary" }],
   icons: {
     icon: [{ url: "/favicon.png", type: "image/png" }],
     apple: [{ url: "/logo-full.png" }],
   },
-  openGraph: {
-    title: "flutter_blueprint - Enterprise-grade Flutter App Scaffolding",
-    description:
-      "Stop wasting hours on boilerplate. Generate production-ready Flutter projects in seconds.",
-    type: "website",
-  },
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  themeColor: "#0A0A0A",
 };
 
 export default function RootLayout({

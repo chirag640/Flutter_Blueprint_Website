@@ -23,6 +23,7 @@ import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 import DoneIcon from "@mui/icons-material/Done";
 import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 import RestartAltIcon from "@mui/icons-material/RestartAlt";
+import { trackFunnelEvent } from "../lib/funnel";
 
 interface CommandOptions {
   appName: string;
@@ -38,6 +39,13 @@ interface CommandOptions {
   notifications: boolean;
   maps: boolean;
   socialAuth: boolean;
+}
+
+interface Recipe {
+  id: string;
+  label: string;
+  description: string;
+  options: Partial<CommandOptions>;
 }
 
 const defaultOptions: CommandOptions = {
@@ -61,6 +69,47 @@ export default function CommandBuilder() {
   const [command, setCommand] = useState("");
   const [copied, setCopied] = useState(false);
   const [fileCount, setFileCount] = useState(43);
+
+  const recipes: Recipe[] = [
+    {
+      id: "enterprise-mobile",
+      label: "Enterprise Mobile",
+      description: "Secure mobile baseline with CI and observability",
+      options: {
+        state: "riverpod",
+        api: true,
+        tests: true,
+        ci: "github",
+        analytics: "sentry",
+        hive: true,
+      },
+    },
+    {
+      id: "offline-first",
+      label: "Offline First",
+      description: "API + cache + sync-friendly setup",
+      options: {
+        state: "bloc",
+        api: true,
+        hive: true,
+        pagination: true,
+        tests: true,
+      },
+    },
+    {
+      id: "lean-starter",
+      label: "Lean Starter",
+      description: "Minimal setup for rapid prototyping",
+      options: {
+        state: "provider",
+        api: false,
+        hive: false,
+        pagination: false,
+        analytics: "none",
+        ci: "none",
+      },
+    },
+  ];
 
   useEffect(() => {
     let cmd = `flutter_blueprint init ${options.appName}`;
@@ -120,6 +169,14 @@ export default function CommandBuilder() {
 
   const handleCopy = () => {
     navigator.clipboard.writeText(command);
+    trackFunnelEvent("command_copy", {
+      source: "command-builder",
+      command,
+      fileCount,
+      state: options.state,
+      ci: options.ci,
+      analytics: options.analytics,
+    });
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
   };
@@ -127,6 +184,29 @@ export default function CommandBuilder() {
   const handleReset = () => {
     setOptions(defaultOptions);
   };
+
+  const applyRecipe = (recipe: Recipe) => {
+    setOptions({ ...defaultOptions, ...recipe.options });
+    trackFunnelEvent("recipe_select", {
+      recipeId: recipe.id,
+      label: recipe.label,
+    });
+  };
+
+  const generatedStructurePreview = [
+    "lib/main.dart",
+    "lib/app/app.dart",
+    "lib/core/config/app_config.dart",
+    options.api ? "lib/core/api/api_client.dart" : null,
+    options.analytics === "sentry"
+      ? "lib/core/analytics/sentry_service.dart"
+      : null,
+    options.hive ? "lib/core/database/hive_database.dart" : null,
+    options.tests ? "test/widget_test.dart" : null,
+    options.ci === "github" ? ".github/workflows/ci.yml" : null,
+    "docs/release/secure-builds.md",
+    "docs/engineering/reproducible-builds.md",
+  ].filter(Boolean) as string[];
 
   const OptionSwitch = ({
     label,
@@ -293,6 +373,48 @@ export default function CommandBuilder() {
               }}
             >
               <Stack spacing={3}>
+                <Box>
+                  <Typography
+                    sx={{
+                      fontSize: "0.75rem",
+                      color: "rgba(255,255,255,0.5)",
+                      mb: 1,
+                      fontWeight: 600,
+                    }}
+                  >
+                    PROJECT RECIPES
+                  </Typography>
+                  <Stack spacing={1}>
+                    {recipes.map((recipe) => (
+                      <Button
+                        key={recipe.id}
+                        variant="outlined"
+                        onClick={() => applyRecipe(recipe)}
+                        sx={{
+                          justifyContent: "flex-start",
+                          textTransform: "none",
+                          borderColor: "rgba(255,255,255,0.15)",
+                          color: "rgba(255,255,255,0.85)",
+                        }}
+                      >
+                        <Box sx={{ textAlign: "left" }}>
+                          <Typography sx={{ fontWeight: 600 }}>
+                            {recipe.label}
+                          </Typography>
+                          <Typography
+                            sx={{
+                              fontSize: "0.75rem",
+                              color: "rgba(255,255,255,0.6)",
+                            }}
+                          >
+                            {recipe.description}
+                          </Typography>
+                        </Box>
+                      </Button>
+                    ))}
+                  </Stack>
+                </Box>
+
                 {/* State Management */}
                 <OptionSelect
                   label="State Management"
@@ -650,6 +772,41 @@ export default function CommandBuilder() {
               >
                 Copy Command & Run
               </Button>
+
+              <Paper
+                sx={{
+                  mt: 3,
+                  p: 2,
+                  borderRadius: "12px",
+                  background: "rgba(255,255,255,0.02)",
+                  border: "1px solid rgba(255,255,255,0.08)",
+                }}
+              >
+                <Typography
+                  sx={{
+                    fontSize: "0.75rem",
+                    color: "rgba(255,255,255,0.6)",
+                    mb: 1,
+                    fontWeight: 600,
+                  }}
+                >
+                  GENERATED FOLDER PREVIEW
+                </Typography>
+                <Stack spacing={0.5}>
+                  {generatedStructurePreview.map((line) => (
+                    <Typography
+                      key={line}
+                      sx={{
+                        fontFamily: "monospace",
+                        fontSize: "0.78rem",
+                        color: "rgba(255,255,255,0.82)",
+                      }}
+                    >
+                      {line}
+                    </Typography>
+                  ))}
+                </Stack>
+              </Paper>
             </Box>
           </Grid>
         </Grid>
